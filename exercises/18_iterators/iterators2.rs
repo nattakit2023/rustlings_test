@@ -4,9 +4,9 @@
 // TODO: Complete the `capitalize_first` function.
 // "hello" -> "Hello"
 fn capitalize_first(input: &str) -> String {
-    match input {
+    match input.chars().next() {
         None => String::new(),
-        Some(first) => first.to_ascii_uppercase(),
+        Some(first) => first.to_uppercase().to_string() + &input[1..],
     }
 }
 
@@ -16,7 +16,7 @@ fn capitalize_first(input: &str) -> String {
 fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
     words
         .into_iter()
-        .map(|word| capitalize_first(&word))
+        .map(|word| capitalize_first(word))
         .collect()
 }
 
@@ -26,7 +26,7 @@ fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
 fn capitalize_words_string(words: &[&str]) -> String {
     words
         .into_iter()
-        .map(|word| capitalize_first(&word))
+        .map(|word| capitalize_first(word))
         .collect()
 }
 
